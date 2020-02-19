@@ -15,9 +15,7 @@ Adds an elemental content block with an image
 
 # Usage
 This module adds a simple way to add a content block with an HTML image
-By default, the module doesn't add any styling, it expects you to do this in your own CSS file
-
-A snippet of SCSS is included in the docs, designed to work with Bootstrap 4, which provides some basic layout for the element.
+By default, the module doesn't add much in the way of styling, it expects you to do this in your own CSS file
 
 The CSS class assigned to the various image widths can be configured using a YML config file:
 

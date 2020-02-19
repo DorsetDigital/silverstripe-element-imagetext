@@ -4,9 +4,11 @@ namespace DorsetDigital\Elements;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
+use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\FieldType\DBField;
 
 
@@ -30,6 +32,9 @@ class ImageTextElement extends BaseElement
         'Image'
     ];
     private static $inline_editable = false;
+    private static $has_one = [
+        'ImageLink' => SiteTree::class
+    ];
 
     private static $sizes = [
         'half' => '1/2 page width',
@@ -53,7 +58,11 @@ class ImageTextElement extends BaseElement
             TextField::create('ImageAlt')->setTitle('Alt text for the image'),
             DropdownField::create('ImageWidth')
                 ->setSource($this->config()->get('sizes'))
-                ->setDescription('Relative image size on larger screens.  On smaller screens the image will flow before or after the text content, instead of sitting next to it.')
+                ->setDescription('Relative image size on larger screens.  On smaller screens the image will flow before or after the text content, instead of sitting next to it.'),
+            TreeDropdownField::create('ImageLinkID',
+                _t(__CLASS__ . '.Link', 'Link'),
+                SiteTree::class
+            )->setDescription(_t(__CLASS__ . '.LinkDescription', 'Optional link for the image'))
         ]);
         return $fields;
     }
