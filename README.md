@@ -6,8 +6,9 @@ Adds an elemental content block with an image
 [![Build Status](https://scrutinizer-ci.com/g/DorsetDigital/silverstripe-element-imagetext/badges/build.png?b=master)](https://scrutinizer-ci.com/g/DorsetDigital/silverstripe-element-imagetext/build-status/master)
 
 # Requirements
-* Silverstripe 4.x
-* Silverstripe Elemental
+* PHP ^8.4
+* Silverstripe ^6.0
+* Silverstripe Elemental ^6.0
 
 # Installation
 * Install the code with `composer require dorsetdigital/silverstripe-element-imagetext`

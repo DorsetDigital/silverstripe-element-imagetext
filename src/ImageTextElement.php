@@ -1,6 +1,7 @@
 <?php
 namespace DorsetDigital\Elements;
 
+use Override;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
@@ -9,7 +10,6 @@ use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\TreeDropdownField;
-use SilverStripe\ORM\FieldType\DBField;
 
 
 class ImageTextElement extends BaseElement
@@ -17,7 +17,7 @@ class ImageTextElement extends BaseElement
 
     private static $singular_name = 'Text & Image Block';
     private static $plural_name = 'Text & Image Blocks';
-    private static $description = 'Adds a block of text with accompanying image';
+    private static $class_description = 'Adds a block of text with accompanying image';
     private static $table_name = 'DorsetDigital_Elements_ImageText';
     private static $db = [
         'Content' => 'HTMLText',
@@ -44,6 +44,7 @@ class ImageTextElement extends BaseElement
     ];
 
 
+    #[Override]
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -60,17 +61,17 @@ class ImageTextElement extends BaseElement
                 ->setSource($this->config()->get('sizes'))
                 ->setDescription('Relative image size on larger screens.  On smaller screens the image will flow before or after the text content, instead of sitting next to it.'),
             TreeDropdownField::create('ImageLinkID',
-                _t(__CLASS__ . '.Link', 'Link'),
+                _t(self::class . '.Link', 'Link'),
                 SiteTree::class
-            )->setDescription(_t(__CLASS__ . '.LinkDescription', 'Optional link for the image'))
+            )->setDescription(_t(self::class . '.LinkDescription', 'Optional link for the image'))
         ]);
         return $fields;
     }
 
+    #[Override]
     public function getType()
     {
         return 'Image & Text';
     }
-
 
 }
