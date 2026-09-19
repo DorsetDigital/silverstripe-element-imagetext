@@ -60,6 +60,12 @@ Version 2 targets Silverstripe CMS 6 and PHP 8.3 or newer and contains deliberat
 
 The `Image` relation has changed from `many_many` to `has_one`, reflecting the fact that the element supports a single image. The old SiteTree-only `ImageLink` relation has also been replaced by Silverstripe LinkField.
 
-After updating the code, run a dev/build and then run the supplied `MigrateImageTextElementTask`. The task copies the first image from the legacy many-many relation into the new single-image relation and converts legacy SiteTree image links into LinkField `SiteTreeLink` records.
+After updating the code, run a dev/build and then run the supplied migration task **before editing existing Image & Text elements**:
+
+```bash
+vendor/bin/sake MigrateImageTextElementTask
+```
+
+The task copies the first image from the legacy many-many relation into the new single-image relation and converts legacy SiteTree image links into LinkField `SiteTreeLink` records. It is safe to run more than once: already-migrated values are skipped, and existing v2 values are not overwritten.
 
 The migration is intentionally explicit rather than automatic. Review the migrated content before removing any legacy database tables or columns.
