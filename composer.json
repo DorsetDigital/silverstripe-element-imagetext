@@ -1,27 +1,24 @@
 {
- "name": "dorsetdigital/silverstripe-element-imagetext",
- "description": "Adds an elemental content block with an image",
- "type": "silverstripe-vendormodule",
- "homepage": "https://github.com/DorsetDigital/silverstripe-element-imagetext",
- "keywords": ["silverstripe", "elemental", "module"],
- "authors": [
-  {
-   "name": "Tim Burt",
-   "email": "tim@dorset-digital.net"
+  "name": "dorsetdigital/silverstripe-element-imagetext",
+  "description": "Adds an Elemental content block with text and an image",
+  "type": "silverstripe-vendormodule",
+  "homepage": "https://github.com/DorsetDigital/silverstripe-element-imagetext",
+  "keywords": ["silverstripe", "elemental", "image", "content block"],
+  "authors": [
+    {
+      "name": "Tim Burt",
+      "email": "tim@dorset-digital.net"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "silverstripe/cms": "^6.0",
+    "dnadesign/silverstripe-elemental": "^6.0"
+  },
+  "license": "BSD-3-Clause",
+  "autoload": {
+    "psr-4": {
+      "DorsetDigital\\Elements\\": "src/"
+    }
   }
- ],
- "require": {
-  "php": "^8.3",
-  "silverstripe/cms": "^6.0",
-  "dnadesign/silverstripe-elemental": "^6.0"
- },
- "license": "BSD-3-Clause",
- "autoload": {
-  "psr-4": {
-   "DorsetDigital\\Elements\\": "src/"
-  }
- },
- "extra": {
- },
- "minimum-stability": "dev"
 }
