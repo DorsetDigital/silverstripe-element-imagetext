@@ -13,6 +13,7 @@
   "require": {
     "php": "^8.3",
     "silverstripe/cms": "^6.0",
+    "silverstripe/linkfield": "^4.0",
     "dnadesign/silverstripe-elemental": "^6.0"
   },
   "license": "BSD-3-Clause",
