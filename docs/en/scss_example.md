@@ -1,43 +1,47 @@
-By default, this module does not provide any CSS as that is usually dealt with in a global stylesheet in our projects.
+# Styling example
 
+This module deliberately does not provide frontend CSS. Layout is expected to be handled by the consuming project's stylesheet.
 
-Below is a sample of SCSS, designed to work with Bootstrap 4, which provides some basic layout styling for the element. 
-
+The default width values are `half`, `third`, `quarter` and `sixth`. A simple framework-independent starting point could be:
 
 ```scss
-.element.dorsetdigital__elements__imagetextelement {
-  .content-element__row {
-    @extend .row;
+.content-element__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
-    .content-element__column {
-      @extend .col;
+.content-element__column {
+  flex: 1 1 0;
+}
 
-      &.half {
-        @extend .col-12;
-        @extend .col-md-6;
-      }
+.content-element__column.half {
+  flex-basis: calc(50% - 1rem);
+}
 
-      &.third {
-        @extend .col-12;
-        @extend .col-md-4;
-      }
+.content-element__column.third {
+  flex-basis: calc(33.333% - 1rem);
+}
 
-      &.quarter {
-        @extend .col-12;
-        @extend .col-md-3;
-      }
+.content-element__column.quarter {
+  flex-basis: calc(25% - 1rem);
+}
 
-      &.sixth {
-        @extend .col-12;
-        @extend .col-md-2;
-      }
-    }
+.content-element__column.sixth {
+  flex-basis: calc(16.667% - 1rem);
+}
 
-    .content-image {
-      @extend .img-fluid;
-    }
+.content-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .content-element__column {
+    flex-basis: 100%;
   }
 }
 ```
 
- 
+The width keys are configurable, so projects using Bootstrap or another layout system can instead configure the dropdown values to emit their own utility or grid classes.
