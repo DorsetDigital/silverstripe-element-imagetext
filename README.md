@@ -10,7 +10,7 @@ Adds an Elemental content block containing rich text and an accompanying image.
 - PHP ^8.3
 - Silverstripe CMS ^6.0
 - DNADesign Silverstripe Elemental ^6.0
-- Silverstripe LinkField ^4.0
+- Silverstripe LinkField ^5.0
 
 For Silverstripe CMS 4 projects, use the 1.x releases.
 
