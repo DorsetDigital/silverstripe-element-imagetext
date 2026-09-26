@@ -1,17 +1,24 @@
+<% if $Image %>
 <div class="content-element__column $ImageWidth">
     <% if $ImageLink %>
-    <a href="$ImageLink.Link">
+    <a href="$ImageLink.URL"<% if $ImageLink.OpenInNew %> target="_blank" rel="noopener noreferrer"<% end_if %>>
     <% end_if %>
+    <% with $Image.Convert('webp') %>
     <img class="content-image"
-         sizes="(max-width: 1140px) 100vw, 1140px"
-         srcset="
-$Image.First.Scalewidth(320).URL 320w,
-$Image.First.Scalewidth(400).URL 400w,
-$Image.First.Scalewidth(550).URL 550w,
-$Image.First.Scalewidth(760).URL 760w"
-         src="$Image.First.Scalewidth(760).URL"
-         alt="$ImageAlt">
+         src="$ScaleWidth(760).URL"
+         srcset="$ScaleWidth(320).URL 320w,
+                 $ScaleWidth(400).URL 400w,
+                 $ScaleWidth(550).URL 550w,
+                 $ScaleWidth(760).URL 760w"
+         sizes="(max-width: 760px) 100vw, 760px"
+         width="$ScaleWidth(760).Width"
+         height="$ScaleWidth(760).Height"
+         loading="lazy"
+         decoding="async"
+         alt="$Up.ImageAlt">
+    <% end_with %>
     <% if $ImageLink %>
     </a>
     <% end_if %>
 </div>
+<% end_if %>
